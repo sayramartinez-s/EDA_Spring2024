@@ -1,6 +1,6 @@
 ---
 title: "Assignment 1: Introduction"
-author: "Student Name"
+author: "Sayra Martinez"
 output: pdf_document
 ---
 
@@ -22,22 +22,25 @@ Enter answers to the questions just below the >Answer: prompt.
 
 1. What are your previous experiences with data analytics, R, and Git? Include both formal and informal training.
 
-> Answer: 
+> Answer:
+None. I have never worked before with this R or Git. I have only have few experience with stata, but not with other data analytics directly.
 
 2. Are there any components of the course about which you feel confident?
 
 > Answer: 
+Not sure.
 
 3. Are there any components of the course about which you feel apprehensive?
 
 > Answer: 
-
+No, although my lack of experience with the course matters, I'm excited and feeling confident to learn.
 
 ## 2) GitHub
 
 Provide a link below to your forked course repository in GitHub. Make sure you have pulled all recent changes from the course repository and that you have updated your course README file, committed those changes, and pushed them to your GitHub account. 
 
 > Answer: 
+https://github.com/sayramartinez-s/EDA_Spring2024.git
 
 ## 3) Knitting
 When you have completed this document, click the `knit` button.This should produce a PDF copy of your markdown document. Submit this PDF to Sakai. 
