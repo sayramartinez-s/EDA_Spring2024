@@ -9,8 +9,6 @@ date: "2024-01-18"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-```
 
 
 
