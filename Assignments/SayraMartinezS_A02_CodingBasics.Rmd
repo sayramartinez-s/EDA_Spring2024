@@ -39,10 +39,10 @@ kplus3_seq #I call up the sequence
 #2. 
 mean(kplus3_seq)
 median(kplus3_seq)
-summary(kplus3_seq) # Although I used the specific computation, this function also returns the requested values.
+summary(kplus3_seq) # Although I used the specific computation, this function                       also returns the requested values.
 
 #3.
-mean(kplus3_seq) > median(kplus3_seq) #The instruction requested this, but as it is false, below I also added asked to determine if it's less or equal to the median.
+mean(kplus3_seq) > median(kplus3_seq) #The instruction requested this,                              but as it is false, below I also added asked to determine if it's less or equal                       to the median.
 mean(kplus3_seq) < median(kplus3_seq)
 mean(kplus3_seq) == median(kplus3_seq)
 ```
