@@ -1,6 +1,6 @@
 ---
 title: "Assignment 2: Coding Basics"
-author: "Student Name"
+author: "Sayra Martinez"
 output: pdf_document
 geometry: margin=2.54cm
 editor_options: 
@@ -32,11 +32,19 @@ This exercise accompanies the lessons in Environmental Data Analytics on coding 
 
 ```{r basics 1}
 #1. 
+seq(1, 30, 3) #I created the sequence setting the conditions
+kplus3_seq <- seq(1, 30, 3) ## I named the sequence.
+kplus3_seq #I call up the sequence
 
 #2. 
+mean(kplus3_seq)
+median(kplus3_seq)
+summary(kplus3_seq) # Although I used the specific computation, this function also returns the requested values.
 
-#3. 
-
+#3.
+mean(kplus3_seq) > median(kplus3_seq) #The instruction requested this, but as it is false, below I also added asked to determine if it's less or equal to the median.
+mean(kplus3_seq) < median(kplus3_seq)
+mean(kplus3_seq) == median(kplus3_seq)
 ```
 
 ## Basics, Part 2
@@ -50,21 +58,49 @@ This exercise accompanies the lessons in Environmental Data Analytics on coding 
 8.  Label the columns of your data frame with informative titles.
 
 ```{r basics 2}
+#5. I create the vectors
+Student_Name <- c("Eve", "Luis", "Silvana", "Ainah") # Character type
+test_scores <- c(90, 45, 99, 50) # numeric type
+passed <- test_scores >= 50 & test_scores <= 100 # logical type
 
+#6.I determine the type of data of each vector
+class(Student_Name)
+class(test_scores)
+class(passed)
+
+#7. I create the data frame combining the vectors, which already has the informative titles.
+df_scores <- as.data.frame(cbind(Student_Name,test_scores,passed))
+class(df_scores)
+df_scores
+
+#8. They already have informative titles as showed below
+colnames(df_scores)
 ```
 
 9.  QUESTION: How is this data frame different from a matrix?
 
 > Answer:
+While the matriz only allows to enter data of the same type, the data frame has different types. In this case, it contains, character, numeric and logical information.
 
 10. Create a function with an if/else statement. Your function should take a **vector** of test scores and print (not return) whether a given test score is a passing grade of 50 or above (TRUE or FALSE). You will need to choose either the `if` and `else` statements or the `ifelse` statement. 
 
 11. Apply your function to the vector with test scores that you created in number 5.
 
 ```{r basics 3}
+#10. I create the function
+approved <- function(x){
+  ifelse(x>=50 & x<=100, print(TRUE), print(FALSE))
+}
 
+#11. I apply the function "approved" for the values in my vector "test_scores"
+results <- approved(test_scores)
+results #ask difference from print(results)
+
+## This is for my own: approved(49)
+#approved(c(48, 49, 56, 100, 101))
 ```
 
 12. QUESTION: Which option of `if` and `else` vs. `ifelse` worked? Why?
 
 > Answer:
+I used "ifelse" function, because I think it was a simple logical request, but if else, could help me to better track my conditions in more complex cases
