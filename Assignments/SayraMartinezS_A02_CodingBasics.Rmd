@@ -103,4 +103,4 @@ print(results)
 12. QUESTION: Which option of `if` and `else` vs. `ifelse` worked? Why?
 
 > Answer:
-I used "ifelse" function, because I think it was a simple logical request, since it was a binary response, but "if else" function could help me to better track my conditions in more complex cases.
+Both can be used for this task. Yet, I used "ifelse" function, because I think it was a simple logical request, since it was only a binary response. "if else" function could help me to better track my conditions in more complex cases.
