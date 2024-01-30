@@ -99,6 +99,8 @@ Commons functions to import datasets and store as data frames are *read.table()*
 # Relative file path (friendly for users regardless of machine)
 USGS.flow.data <- read.csv("./Data/Raw/USGS_Site02085000_Flow_Raw.csv",stringsAsFactors = TRUE)   
 
+## GET USED TO USING "stringsAsFactors = TRUE"
+
 # What happens if we don't assign a name to our imported dataset?
 #read.csv("./Data/Raw/USGS_Site02085000_Flow_Raw.csv",stringsAsFactors = TRUE)
 
