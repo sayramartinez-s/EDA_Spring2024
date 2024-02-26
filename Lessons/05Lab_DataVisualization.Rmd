@@ -254,9 +254,9 @@ PeterPaul.chem.nutrients %>%
   filter(depth == 0) %>%
   ggplot(aes(x=daynum, y=temperature_C, color=year4)) +
   geom_point(alpha=0.5) + 
-  facet(vars(lakename)) +
+  facet_wrap(vars(lakename)) +
   xlab(expression(paste("Temperature")))
-  
+  PeterPaul.chem.nutrients
 
 #2. 
 # Plot temperature by date. Color your points by depth.

@@ -1,9 +1,12 @@
 ---
 title: 'A06 - Crafting Reports'
-author: "Student Name" 
+author: "Sayra Martinez" 
 date: "Spring 2024"
 output: pdf_document
+toc: true
 ---
+
+\listoffigures
 
 ## Objectives:
 
@@ -27,7 +30,11 @@ Using markdown, create a table beneath the `Table: EPA Air Quality` line below t
 
 Table: EPA Air Quality
 
-
+| Item | Value|
+|------:|:-------|
+|Source | EPA Air Quality System (AQS)| 
+|Date | 2018-2019 |
+|Filename | EPAair_O3_PM25_NC1819_Processed.csv |
 
 ---
 
@@ -35,7 +42,7 @@ Table: EPA Air Quality
 
 Set the following R code chunk so that it runs when knit, but no messages, errors, or any output is shown. The code itself, however, should be displayed.
 
-```{r project.setup}
+```{r project.setup, error=F, message=FALSE, results='hide', warning=FALSE}
 #Import libraries
 library(tidyverse);library(lubridate);library(here);library(knitr)
 
@@ -61,13 +68,15 @@ Customize the chunk options such that the code is run but is not displayed in th
 > -   If your output table spans across two pages, try inserting a page break in the markdown just before your code chunk.
 
 
-```{r data.summary}
+```{r data.summary, echo=FALSE, warning=FALSE}
 #Compute mean PM2.5 concentration for each county, sorted by value
 summary_PM25 <- epa_data %>% 
   drop_na(PM2.5) %>% 
   group_by(COUNTY) %>% 
   summarize(mean_PM2.5 = mean(PM2.5)) %>% 
   arrange(mean_PM2.5)
+
+colnames(summary_PM25) <- c("County","$\\mu g/m^3$")
 
 #Compute mean ozone concentration for each county, sorted by value
 summary_Ozone <- epa_data %>% 
@@ -77,7 +86,11 @@ summary_Ozone <- epa_data %>%
     mean_Ozone = mean(Ozone)) %>% 
   arrange(mean_Ozone)
 
+colnames(summary_Ozone) <- c("County", "$\\mu g/m^3$")
+
 #Use the `kable` function to produce the 2 tables in markdown format
+knitr::kable(summary_PM25, caption = "Mean Particulates (2.5mm)")
+knitr::kable(summary_Ozone, caption= "Mean Ozone")
 
 ```
 
@@ -87,8 +100,49 @@ summary_Ozone <- epa_data %>%
 
 Create two separate code chunks that create boxplots of the distribution of Ozone levels by month using, one for only records collected in 2018 and one for records in 2019. Customize the chunk options such that the final figures are displayed but not the code used to generate the figures. In addition, align the plots on the left side of the page and set the figure heights so both plots fit on the same page with minimal space remaining. Lastly, add a `fig.cap` chunk option to add a caption (title) to your plot that will display underneath the figure.
 
+```{r, echo=FALSE, warning=FALSE, out.height='55%', out.width='85%', fig.cap='2018 Ozone values by month', fig.align='left'}
+epa_data$Month_f <- factor(
+  epa_data$Month, 
+  levels=1:12,
+  labels=month.abb)
 
+Ozone.2018 <- epa_data %>%
+  filter(Year == "2018") %>%
+  ggplot(aes(x = Month_f, y = Ozone)) +
+  geom_boxplot(aes(color = Year)) +
+  scale_x_discrete(drop=F) +
+  ggtitle("Monthly Ozone concentrations 2018") +
+    xlab(
+    expression(paste("Month")))+
+  ylab(
+    expression(paste("Ozone Concentration (µg/m³)")))+
+    theme(  
+        legend.position =  "none",
+         axis.title.x = element_text(size = 8),
+        axis.title.y = element_text(size = 8))
+print(Ozone.2018)
 
+```
+
+```{r, echo=FALSE, warning=FALSE, out.height='55%', out.width='85%', fig.cap='2019 Ozone values by month', fig.align='left'}
+
+Ozone.2019 <- epa_data %>%
+  filter(Year == "2019") %>%
+  ggplot(aes(x = Month_f, y = Ozone)) +
+  geom_boxplot(aes(color = Year)) +
+  scale_x_discrete(drop=F) +
+  ggtitle("Monthly Ozone concentrations 2019")+
+    xlab(
+    expression(paste("Month")))+
+  ylab(
+    expression(paste("Ozone levels (µg/m³)")))+
+    theme(  
+        legend.position =  "none",
+         axis.title.x = element_text(size = 8),
+        axis.title.y = element_text(size = 8))
+print(Ozone.2019)
+
+```
 ---
 \newpage
 
@@ -97,3 +151,4 @@ Add a table of contents and list of figures to your document and knit to a PDF. 
 
 ## Git Repository
 
+[ENV872/EDA_Spring2024](https://github.com/sayramartinez-s/EDA_Spring2024.git)

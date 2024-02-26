@@ -33,7 +33,9 @@ This exercise accompanies the lessons in Environmental Data Analytics on Data Vi
 ```{r initialize project}
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 #1 Installing libraries, setting my directory and importing my datasets
-library(tidyverse);library(lubridate);library(here); library(dplyr); library(cowplot); library(viridis); library(RColorBrewer); library(colormap)
+library(tidyverse);library(lubridate);library(here); library(dplyr); 
+library(cowplot); library(viridis); 
+library(RColorBrewer); library(colormap)
 getwd()
 
 PeterPaul.chem.nutrients <- 
@@ -64,17 +66,18 @@ class(Litter$collectDate)
 ```{r build plot theme}
 #3 Creating my theme
 
-sayra.theme <- theme_wsj(base_size = 9) +
-  theme(axis.text = element_text(color = "black"), 
+sayra.theme <- 
+  theme(axis.text = element_text(color = "black"),
+        
         legend.position = "right",
         legend.direction = "vertical",
         plot.title =        element_text(color = "black", size = 10),
         axis.ticks =        element_line(6),
         axis.text.x = element_text(color = "darkred", size = 7),
         axis.text.y = element_text(color = "darkred", size = 7),
+        plot.background = element_rect(fill = "gray90"),
         legend.background = element_rect(
-      color='black'
-    
+      color="black"
       ),
     legend.title = element_text(
       color="royalblue", size = 7.5
@@ -129,35 +132,45 @@ Temp.Boxplot <-
   ggplot(PeterPaul.chem.nutrients, aes(x = month_f, y = temperature_C)) +
   geom_boxplot(aes(color = lakename)) +
   scale_x_discrete(drop=F) +
-  ggtitle("Temperature") +
-  ylab(expression(paste("C°")))+
+  ylab(
+    expression(paste("C°")))+
   theme(axis.text.x = element_blank(),         
-        legend.position =  "none")
+        legend.position =  "none",
+         axis.title.x = element_blank(),
+        axis.title.y = element_text(size = 7))
 print(Temp.Boxplot)
 
 Phospho.boxplot <-
   ggplot(PeterPaul.chem.nutrients, aes(x = month_f, y = tp_ug)) +
   geom_boxplot(aes(color = lakename)) +
   scale_x_discrete(drop=F) +
-  ggtitle("Total Phosphorus") +
-  ylab(expression(paste("Total Phosphorus")))+
+  ylab(
+    expression(paste(
+    "Total Phosphorus")))+
   theme(axis.text.x = element_blank(),         
-        legend.position =  "none")
+        legend.position =  "none",
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(size = 7))
 print(Phospho.boxplot)
 
 Nitro.boxplot <-
   ggplot(PeterPaul.chem.nutrients, aes(x = month_f, y = tn_ug)) +
-  geom_boxplot(aes(color = lakename)) +
+  geom_boxplot(
+    aes(color = lakename)) +
   scale_x_discrete(drop=F) +
   labs(color = "Lake name")+
-  ggtitle("Total Nitrogen") +
-  ylab(expression(paste("Nitrogen")))+
+  xlab(expression(paste("Month")))+
+  ylab(expression(paste(
+    "Total Nitrogen")))+
   theme(legend.position =  "bottom",
-        legend.direction =  "horizontal")
+        legend.direction =  "horizontal",
+  axis.title.x = element_text(size = 7),
+  axis.title.y = element_text(size = 7),
+  legend.key.size = unit(0.5, "line"))
 print(Nitro.boxplot)
 
 Three.Nutrients <-
-plot_grid(Temp.Boxplot, Phospho.boxplot, Nitro.boxplot, nrow = 3, rel_heights = c(1, 1.2, 2.3))
+plot_grid(Temp.Boxplot, Phospho.boxplot, Nitro.boxplot, nrow = 3, rel_heights = c(1, 1.5, 2.5), align = T)
 print(Three.Nutrients)
 
 ```
@@ -183,7 +196,8 @@ Needles.plot <-  Litter.Needles %>%
 ggplot(aes(x = collectDate, 
           y = dryMass, color = nlcdClass)) +
   geom_point() +
-  labs(title = "Dry Mass. Needle Litter Functional Group")+
+  labs(title = 
+         "Dry Mass. Needle Litter Functional Group")+
   theme(legend.position =  "right",
         legend.direction =  "vertical")+
   labs(color = "NLCD classes")
