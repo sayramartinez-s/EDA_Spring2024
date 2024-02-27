@@ -205,7 +205,7 @@ TukeyHSD(temperature.anova)
 
 16.From the findings above, which lakes have the same mean temperature, statistically speaking, as Peter Lake? Does any lake have a mean temperature that is statistically distinct from all the other lakes?
 
->Answer: Only Paul Lake and Ward Lake have the same mean temperature than Peter Lake, as the differences for those were not statistically significant. And yes, actually in most of the comparisons the mean temperature is statistically distinct between lakes, with a few of exceptions: (Crampton Lake-Central Long Lake; Ward Lake-Crampton Lake; Hummingbird Lake-East Long Lake; Tuesday Lake-East Long Lake; Tuesday Lake-Hummingbird Lake; West Long Lake-Hummingbird Lake; Peter Lake-Paul Lake; Ward Lake-Paul Lake; Ward Lake-Peter Lake; and West Long Lake-Tuesday Lake. In this comparisons differences were not statistically significant).
+>Answer: Only Paul Lake and Ward Lake have the same mean temperature than Peter Lake, as the differences for those were not statistically significant. And no, in all the cases, the lakes have at least other lake where the differences are not statistically significant.
 
 17. If we were just looking at Peter Lake and Paul Lake. What's another test we might explore to see whether they have distinct mean temperatures? 
 
