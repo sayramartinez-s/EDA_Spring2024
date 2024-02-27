@@ -162,7 +162,7 @@ summary(temperature.lm)
 13. Is there a significant difference in mean temperature among the lakes? Report your findings. 
 
 > Answer: 
-Yes, both models conclude mean temperature differs among the analyzed lakes. In ANOVA model, the F value equals to 50 and the p-value (<2e-16 ***) shows statistical significant differences. In the linear model, we have coefficients that represents the difference in temperature for each lake, and in every case such coefficent is statistical significant.
+Yes, both models conclude mean temperature differs among the analyzed lakes. In ANOVA model, the F value equals to 50 and the p-value (<2e-16 ***) shows statistical significant differences. In the linear model, we have coefficients that represent the difference in temperature for each lake, and, in every case, such coefficients are statistical significant.
 
 14. Create a graph that depicts temperature by depth, with a separate color for each lake. Add a geom_smooth (method = "lm", se = FALSE) for each lake. Make your points 50 % transparent. Adjust your y axis limits to go from 0 to 35 degrees. Clean up your graph to make it pretty. 
 
