@@ -2,9 +2,11 @@
 title: "Assignment 7: GLMs (Linear Regressios, ANOVA, & t-tests)"
 author: "Sayra Martinez"
 date: "Spring 2024"
-output: pdf_document
+output:
+  pdf_document: default
+  word_document: default
 geometry: margin=2.54cm
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -147,16 +149,20 @@ As the step() function shows that lowest AIC is the outcome of using all three v
 12. Now we want to see whether the different lakes have, on average, different temperatures in the month of July. Run an ANOVA test to complete this analysis. (No need to test assumptions of normality or similar variances.) Create two sets of models: one expressed as an ANOVA models and another expressed as a linear model (as done in our lessons).
 
 ```{r anova.model}
-#12
+#12 Format as Anova model
 temperature.anova <- aov(data = NTL_LakeChemistry.july, temperature_C ~ lakename)
 summary(temperature.anova)
+
+# Format as linear model
+temperature.lm <- lm(data = NTL_LakeChemistry.july, temperature_C ~ lakename)
+summary(temperature.lm)
 
 ```
 
 13. Is there a significant difference in mean temperature among the lakes? Report your findings. 
 
 > Answer: 
-Yes, mean temperature differs among the analyzed lakes, as the F value equals to 50 and the p-value (<2e-16 ***) shows statistical significant differences.
+Yes, both models conclude mean temperature differs among the analyzed lakes. In ANOVA model, the F value equals to 50 and the p-value (<2e-16 ***) shows statistical significant differences. In the linear model, we have coefficients that represents the difference in temperature for each lake, and in every case such coefficent is statistical significant.
 
 14. Create a graph that depicts temperature by depth, with a separate color for each lake. Add a geom_smooth (method = "lm", se = FALSE) for each lake. Make your points 50 % transparent. Adjust your y axis limits to go from 0 to 35 degrees. Clean up your graph to make it pretty. 
 
