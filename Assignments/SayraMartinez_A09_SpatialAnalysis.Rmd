@@ -2,8 +2,8 @@
 title: 'Assignment 9: Spatial Analysis in R'
 author: "Sayra Martinez"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 editor_options:
   chunk_output_type: console
 ---

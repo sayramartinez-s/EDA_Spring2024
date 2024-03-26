@@ -241,7 +241,7 @@ counties_sf_join <- counties_sf %>%
 #View with mapview
 mapview(counties_sf_join, 
         zcol = 'E_POV', 
-        col.regions = brewer.pal(2, 'RdBu')) + 
+        col.regions = brewer.pal(2, 'PuBu')) + 
   mapview(epa_pm25_sites_sf, cex = 'maxPM')
 
 #view with ggplot
