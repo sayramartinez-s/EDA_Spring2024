@@ -157,6 +157,14 @@ Water_Supply_scraping
 Durham_2015 <- scraping('03-32-010','2015')
 Durham_2015
 
+Durham_2015_plot <- ggplot(Durham_2015,aes(x=Date,y=MGD)) + 
+  geom_line() + 
+  geom_smooth(method="loess",se=F, color = "red") +
+  labs(title = paste(2015, "Maximum Water day usage data for Durham"),
+       y="Maximum Daily Withdrawals",
+       x="Date") +
+  scale_x_date(date_labels = "%b", date_breaks = "1 month")
+Durham_2015_plot
 ```
 
 8. Use the function above to extract data for Asheville (PWSID = 01-11-010) in 2015. Combine this data with the Durham data collected above and create a plot that compares Asheville's to Durham's water withdrawals.
@@ -196,7 +204,7 @@ Asheville_plot <- ggplot(Asheville_df, aes(x = Date, y = MGD)) +
   geom_smooth(method = 'loess', se = F, color = 'blue') +
   labs(x = "Date", y = "Maximum Daily Withdrawals", color = "Town") +
   theme_light() +
-  ggtitle("Maximum Daily Withdrawals in Asheville: 2010-2021")
+  ggtitle("Maximum Daily Withdrawals in Asheville: Monthly data for 2010-2021")
 Asheville_plot
 ```
 
